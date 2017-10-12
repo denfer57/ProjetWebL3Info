@@ -1,0 +1,16 @@
+.cocktail {
+    text-align: center;
+    margin-top: 50px;
+}
+.cocktail img{
+	height: 200px;
+    width: 200px;
+}
+#banniere{
+	background-color: grey;
+	height:150px;
+    top: 0;
+}
+#connect{
+ 	margin-bottom: 15px;
+}
