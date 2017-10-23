@@ -14,7 +14,7 @@
                 <div class="col-xs-offset-2 col-xs-2">
                     <a href="index.php">Accueil</a>
                 </div>
-                <form action="" method="post" class="form-horizontal">
+                <form action="#" method="post" class="form-horizontal">
                     <div class="col-xs-offset-2 col-xs-4">
                     <div class="padd20">
                         <!-- champs du nom d'utilisateur -->
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-xs-1">
                         <!-- connection button-->
-                                <input href="connection.php" id="connect" type="submit" class="btn btn-danger" value="Connection"/>
+                        <input id="connect" type="submit" class="btn btn-danger" value="Connection"/>
                 </form>
                         <!-- inscription button-->
                         <a href="inscription.php" class="btn btn-warning">Inscription</a>
@@ -46,3 +46,36 @@
             </div>
 
 </div>
+<?php
+    $html = "";
+    function verifUser($username){
+        include("connection_bdd.php");
+        $query = "SELECT mdp, no_util FROM utilisateurs WHERE login = '$username'";
+        $statement = $connexion->prepare($query);
+        $statement->execute();
+        $row = $statement->fetch();
+        $password = $row[0];
+        $no_util = $row[1];
+        $passwordco = hash('sha256',trim($_POST["mdpco"]));
+        if(strcmp($password, $passwordco)==0) {
+            $_SESSION["nom"] = $username;
+            $_SESSION["no_util"] = $no_util;
+            return true;
+        }
+        else return false;
+    }
+    
+    if(isset($_POST["ndcco"])) {
+        $username = trim($_POST["ndcco"]);
+        if(verifUser($username)==true) {
+            header("Refresh:0");
+        }
+        else $html.='<div style="text-align: center;">
+            <h2 style="color:red"> Le nom d\'utilisateur ou le mot de passe est incorrect</h2>
+            </div>';
+        
+    }
+
+    echo $html;
+    
+?>

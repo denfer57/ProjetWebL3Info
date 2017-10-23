@@ -30,27 +30,27 @@
 		include("connection_bdd.php");
 		$ndc = trim($_POST["ndc"]);
 		$mdp = trim($_POST["mdp"]);
-		//test sur les champs non obligatoires
+		//tests sur les champs non obligatoires
 		if(isset($_POST["mail"])) $mail = trim($_POST["mail"]);
-		else $mail = "NULL";
+		else $mail = "";
 		if(isset($_POST["adresse"])) $adresse = trim($_POST["adresse"]);
-		else $adresse = "NULL";
+		else $adresse = "";
 		if(isset($_POST["ville"])) $ville = trim($_POST["ville"]);
-		else $ville = "NULL";
+		else $ville = "";
 		if(isset($_POST["code_postal"])) $code_postal = trim($_POST["code_postal"]); 
-		else $code_postal = "NULL";
+		else $code_postal = "";
 		if(isset($_POST["adresse"])) $adresse = trim($_POST["adresse"]); 
-		else $adresse = "NULL";
+		else $adresse = "";
 		if(isset($_POST["nom_util"])) $nom_util = trim($_POST["nom_util"]); 
-		else $nom_util = "NULL";
+		else $nom_util = "";
 		if(isset($_POST["prenom_util"])) $prenom_util = trim($_POST["prenom_util"]); 
-		else $prenom_util = "NULL";
+		else $prenom_util = "";
 		if(isset($_POST["sexe"])) $sexe = trim($_POST["sexe"]); 
-		else $sexe = "NULL";
+		else $sexe = "";
 		if(isset($_POST["telephone"])) $telephone = trim($_POST["telephone"]); 
-		else $telephone = "NULL";
+		else $telephone = "";
 		if(isset($_POST["date_naissance"])) $date_naissance = trim($_POST["date_naissance"]); 
-		else $date_naissance = "NULL";
+		else $date_naissance = "";
 
 		$sel = strval(rand(0, 9999999999999999));
 

@@ -10,7 +10,10 @@
 
 <body>
 <?php 
-	include("Banniere.php");
+	session_start();
+	if(isset($_SESSION['nom'])) include("banniereco.php");
+	else include("banniere.php");
+
 	include("Donnees.inc.php");
 
 	$dir_nom = 'Photos'; // dossier contenant les photos
