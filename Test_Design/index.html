@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Bootstrap JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link media="all" type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="source.css">
+   
+  <title> Cocktail </title>
+  
+</head>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+
+<header>
+
+  <div class="container">
+        <div class="row">
+        <svg viewBox="0 0 760 300">
+    <symbol id="s-text">
+                <text text-anchor="middle" x="50%" y="80%"> Cocktail </text>
+        </symbol>
+
+        <g class = "g-ants">
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+</svg>
+        </div>
+</div>
+
+<div class="container">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> 
+        <span class="glyphicon glyphicon-glass">  </span> 
+        Cocktail
+        <span class="glyphicon glyphicon-glass"></span>
+      </a>
+    </div>
+
+    <!-- Menu contenu + sous-menu deroulant -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Nos Recettes <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Recettes </a></li>
+            <li><a href="#">Ingredients</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Categorie</a></li>
+            <li class="divider"></li>
+            <li>     
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Recettes">
+                    </div>
+                    <button type="submit" class="btn btn-default">Recherche</button>
+                </form>
+      
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li><a href="#"><i class="icon-comment"></i> 
+                <span class="glyphicon glyphicon-glass"></span>
+                Favoris 
+                <span class="badge badge-info">00</span></a>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Se connecter <span class="glyphicon glyphicon-user"></span> 
+          <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li>
+            <!-- Link trigger modal se connecter -->
+                <a data-toggle="modal" data-target="#login" >Connexion <span class="glyphicon glyphicon-heart"></span> </a> </li>
+            <li class="divider"></li>
+            <li>
+            <!-- Link trigger modal Inscription -->
+                <a data-toggle="modal" data-target="#becomeamember"> Inscription  <span class="glyphicon glyphicon-home"></span>  </a> </li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+
+</header>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+
+<body>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+
+ <!-- Conteneur -->
+<div class="container">
+	<div class="row">
+
+	<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+	
+<!-- Modal Become a member -->
+        <form action="#" method="post" id="newmember" >
+        <div class="modal fade" id="becomeamember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h2 class="modal-title" id="myModalLabel"> Devenez membre </h2>
+              </div>
+              <div class="modal-body form-inline">
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="firstnamelabel">* Prenom </label>
+                    <input type="text" class="form-control" id="firstnameinput" aria-describedby="firstnameinput" required="">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="lastnamelabel">* Nom </label>
+                    <input type="text" class="form-control" id="lastnameinput" aria-describedby="lastnameinput" required="">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="emaillabel">* Email </label>
+                    <input type="email" class="form-control" id="emailinput" aria-describedby="emailinput" required="">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="passwordlabel">* Mot de passe </label>
+                    <input type="password" class="form-control" id="passwordinput" aria-describedby="passwordinput" required="">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="re-enterpasswordlabel">* Re-rentrez Mot de passe </label>
+                    <input type="password" class="form-control" id="re-enterpasswordinput" aria-describedby="re-enterpasswordinput" required="">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                    <label class="control-label" for="postcodelabel">Code Postal</label>
+                    <input type="text" class="form-control" id="postcodeinput" aria-describedby="postcodeinput">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                <!--
+                 <div class="form-group">
+                    <label class="control-label" for="postcodelabel">How did you hear about us?</label>
+                    <select class="form-control">
+                        <option>- Please select -</option>
+                        <option>Search engine</option>
+                        <option>Web Advertisement</option>
+                        <option>Magazine Advertisement</option>
+                        <option>Friend/Colleague</option>
+                        <option>Email newsletter</option>
+                        <option>Fax</option>
+                        <option>Conference/Tradeshow</option>
+                        <option>Social Media</option>
+                        <option>Other</option>
+                    </select>
+                </div> 
+                -->
+                
+                <br/> <br/>
+                
+                 <div class="form-group">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Finaliser l'Inscription</button>
+                 </div>
+                 
+              </div><!-- end modal-Body -->
+              
+            </div> 
+            
+          </div>
+          
+        </div><!-- end become a member modal -->
+    
+        </form> 
+<!-- end Form -->
+        
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+        
+<!-- Modal Login -->
+        <form id="logingform" action="/" method="post">
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h2 class="modal-title" id="myModalLabel">Login</h2>
+              </div>
+              
+              <div class="modal-body">
+                <div class="form-group has-feedback">
+                  <label class="control-label">Email </label>
+                  <input type="email" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="Email">
+                  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                  <label class="control-label">Mot de Passe</label>
+                  <input type="password" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="Password">
+                  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                </div>
+                
+                <button type="button" class="btn btn-primary">Connexion</button>
+                <input type="checkbox" value="rememberme" id="rememberme">Se souvenir de Moi<br/><br/>
+                
+               <!-- <a href="#">Forgot your password?</a> -->
+                
+              </div>
+              
+              <div class="modal-footer">
+              <h4 class="modal-title" id="myModalLabel"> Si vous n'avez jamais goute a nos cocktails </h4>
+                 <a data-toggle="modal" data-target="#becomeamember" data-dismiss="modal"> <h4> Enregistrez-Vous </h4> </a>
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>-->
+              </div>
+              
+            </div>
+          </div>
+        </div><!-- end become a member modal -->
+        </form> <!-- end login form -->
+        
+	</div>
+</div>
+
+<!-- end login form -->
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+
+<!-- How it Works section -->
+    <section  class="section how-it-works" id="how-it-works" >
+        <div class="container">
+            <div class="row text-center">
+                <div class="how-it-works-heading" >
+                    <h1  class="section-title"> "Un cocktail c'est un peu de poésie dans une coupe" </h1> 
+                   <h4 > Robert De Niro </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 board">
+                    <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+                    <div class="board-inner">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <div class="liner"></div>
+                            <li class="active">
+                                <a href="#home" aria-controls="home" role="tab" data-toggle="tab" title="Un voyage gratuit">
+                      <span class="round-tabs one">
+                              <i class="icon icon-profile-male"></i>
+                      </span>
+                                </a></li>
+
+                            <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" title="Notre affaire">
+                     <span class="round-tabs two">
+                         <i class="icon icon-pencil"></i>
+                     </span>
+                            </a>
+                            </li>
+                            <li><a href="#prototyping" aria-controls="prototyping" role="tab" data-toggle="tab" title="Une petite envie?">
+                     <span class="round-tabs three">
+                          <i class="icon icon-layers"></i>
+                     </span> </a>
+                            </li>
+
+                            <li><a href="#uidesign" aria-controls="uidesign" role="tab" data-toggle="tab" title="UI Design">
+                         <span class="round-tabs four">
+                              <i class="icon icon-aperture"></i>
+                         </span>
+                            </a></li>
+
+                            <li><a href="#doner" aria-controls="doner" role="tab" data-toggle="tab" title="Development">
+                         <span class="round-tabs five">
+                              <i class="icon icon-tools-2"></i>
+                         </span> </a>
+                            </li>
+
+                        </ul></div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="home">
+
+                            <h1 class="head text-center"> Offrez-vous un voyage gratuit à travers nos cocktails  </h1>
+                            <h3 class="narrow text-center">
+                                Des centaines de Recettes de tout bord qui sauront vous emenez à travers d'autres horizons.
+                            </h3>
+
+                            <p class="text-center">
+                                <a href="" class="btn btn-success btn-outline-rounded green"> Get Quote <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="profile">
+                            <h1 class="head text-center"> Un cocktail ? Laissez c'est notre affaire </h1>
+                            <h3 class="narrow text-center">
+                               Une conception soignées faites par des professionnels reconnus.
+                            </h3>
+
+                            <p class="text-center">
+                                <a href="" class="btn btn-success btn-outline-rounded green"> Get Quote <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                            </p>
+
+                        </div>
+                        <div class="tab-pane fade" id="prototyping">
+                            <h1 class="head text-center"> Une petite envie de cocktails ? </h1>
+                            <h3 class="narrow text-center">
+                                Grâce à notre site offrez vous enfin la petite douceur que vous méritez
+                            </h3>
+
+                            <p class="text-center">
+                                <a href="" class="btn btn-success btn-outline-rounded green"> Get Quote <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="uidesign">
+                            <h1 class="head text-center">Offrez des cocktails pour petits et grands</h1>
+                            <h3 class="narrow text-center">
+                                Avec nos cocktails sans alcools la fête est plus folle.
+                            </h3>
+
+                            <p class="text-center">
+                                <a href="" class="btn btn-success btn-outline-rounded green"> Get Quote <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="doner">
+                            <div class="text-center">
+                                <i class="img-intro icon-checkmark-circle"></i>
+                            </div>
+                            <h1 class="head text-center">Et ce n'est pas tout... </h1>
+                            <h3 class="narrow text-center">
+                                Inscrivez-vous sur notre site web pour pouvoir profitez de vos recettes favorites plus tard
+                            </h3>
+                             <div class="container" align="center" >
+                            
+                            <p class="text-center">
+                                <a class="btn btn-success btn-outline-rounded green"  data-toggle="modal" data-target="#becomeamember" data-dismiss="modal" > Inscription <span   style="margin-left:10px;" class="glyphicon glyphicon-home"></span></a>
+                            </p>
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /How it work -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+
+
+</body>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+
+<footer margin= "20em" class="container-fluid text-center bg-lightgray">
+
+        <div class="copyrights" style="margin-top:25px;">
+            <p> Cocktail © 2017, All Rights Reserved
+                <br>
+                <span>Site Web crée par : Jordan Fromeyer & Marwin Nimeskern</span></p>
+            <!--
+            <p><a href="https://www.linkedin.com/in/michael-clark-webdeveloper" target="_blank">Linkedin <i class="fa fa-linkedin-square" aria-hidden="true"></i> </a></p>
+            -->
+        </div>
+</footer>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--> 
+

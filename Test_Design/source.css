@@ -1,0 +1,311 @@
+@import url(https://fonts.googleapis.com/css?family=Cabin);
+
+
+//----------------------------------------------------------------------------------------
+ // Inscripiton / Connexion
+.modal-footer{
+    text-align: left;    
+}
+
+.form-inline .form-group {
+    margin-bottom: auto;
+}
+
+.form-inline .control-label {
+    width: 110px;
+    text-align:right;
+    margin-right: 10px;
+}
+
+//----------------------------------------------------------------------------------------
+
+// Menu 
+html, body{
+  height: 100%;
+  font-weight: auto;
+  margin-left: 5%;
+  margin-right:5%;
+}
+
+body{
+  background: #030325;
+  font-family: Arial;
+  margin: 0px;
+  background-image: url("http://image.noelshack.com/fichiers/2017/48/6/1512235006-images-duckduckgo-com.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+svg {
+    display: block;
+    font: 10.5em 'Cabin';
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 1%;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+    stroke: #fc8300;
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+	stroke: #fca500;
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: #fc6700;
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke: #fc8300;
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+   
+	stroke:#fc5000 ;
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+}
+
+vbar-default .navbar-nav > li.dropdown:hover > a, 
+.navbar-default .navbar-nav > li.dropdown:hover > a:hover,
+.navbar-default .navbar-nav > li.dropdown:hover > a:focus {
+    background-color: rgb(231, 231, 231);
+    color: rgb(85, 85, 85);
+}
+li.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------
+/* footer */
+
+#footer {
+	clear: both;
+	text-align: center;
+	width: 930px;
+	padding: 50px 30px;
+	color: #595144;
+	
+}
+
+.bg-lightgray
+{
+    background-color:LightCyan;
+}
+
+/* footer */
+//----------------------------------------------------------------------------------------
+
+
+
+//----------------------------------------------------------------------------------------
+
+
+/* ==========================================================================
+   7. How It Works Section
+========================================================================== */
+.how-it-works {
+    background: none;
+	padding-bottom: 30px;
+}
+
+.board{
+	/*width: 75%;
+	margin: 60px auto;
+	margin-bottom: 0;
+	box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
+}
+.board .nav-tabs {
+	position: relative;
+	/* border-bottom: 0; */
+	/* width: 80%; */
+	margin: 40px auto;
+	margin-bottom: 0;
+	box-sizing: border-box;
+
+}
+
+.board > div.board-inner > .nav-tabs {
+	border: none;
+}
+
+p.narrow{
+	width: 60%;
+	margin: 10px auto;
+}
+
+.liner{
+	height: 2px;
+	background: #ddd;
+	position: absolute;
+	width: 80%;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: 50%;
+	z-index: 1;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	color: #555555;
+	cursor: default;
+	/* background-color: #ffffff; */
+	border: 0;
+	border-bottom-color: transparent;
+	outline: 0;
+}
+
+span.round-tabs{
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	display: inline-block;
+	border-radius: 100px;
+	background: #fc5000;
+	z-index: 2;
+	position: absolute;
+	left: 0;
+	text-align: center;
+	font-size: 25px;
+}
+
+span.round-tabs.one{
+	border: 2px solid #ddd;
+	color: #ddd;
+}
+
+li.active span.round-tabs.one, li.active span.round-tabs.two, li.active span.round-tabs.three, li.active span.round-tabs.four, li.active span.round-tabs.five {
+	background: #4cff79  !important;
+	border: 2px solid grey;
+	color: #fff;
+}
+
+span.round-tabs.two{
+	border: 2px solid #ddd;
+	color: #ddd;
+}
+
+span.round-tabs.three{
+	border: 2px solid #ddd;
+	color: #ddd;
+}
+
+span.round-tabs.four{
+	border: 2px solid #ddd;
+	color: #ddd;
+}
+
+span.round-tabs.five{
+	border: 2px solid #ddd;
+	color: #ddd;
+}
+
+.nav-tabs > li.active > a span.round-tabs{
+	background: #fafafa;
+}
+.nav-tabs > li {
+	width: 20%;
+}
+
+.nav-tabs > li a{
+	width: 70px;
+	height: 70px;
+	margin: 20px auto;
+	border-radius: 100%;
+	padding: 0;
+}
+
+.nav-tabs > li a:hover{
+	background: transparent;
+}
+
+.tab-content{
+}
+.tab-pane{
+	position: relative;
+	padding-top: 50px;
+}
+
+.btn-outline-rounded{
+	padding: 10px 40px;
+	margin: 20px 0;
+	border: 2px solid transparent;
+	border-radius: 25px;
+}
+
+.btn.green{
+	background-color:#69cb95;
+	/*border: 2px solid #5cb85c;*/
+	color: #ffffff;
+}
+
+@media( max-width : 585px ){
+
+	.board {
+		width: 90%;
+		height:auto !important;
+	}
+	span.round-tabs {
+		font-size:16px;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+	}
+	.tab-content .head{
+		font-size:20px;
+	}
+	.nav-tabs > li a {
+		width: 50px;
+		height: 50px;
+		line-height:50px;
+	}
+
+	li.active:after {
+		content: " ";
+		position: absolute;
+		left: 35%;
+	}
+
+	.btn-outline-rounded {
+		padding:12px 20px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
