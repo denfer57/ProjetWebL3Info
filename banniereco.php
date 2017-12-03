@@ -8,13 +8,8 @@
                         <input id="search" class="btn btn-danger" type="submit" value="Recherche"/>
                     </form>
                 </div>
-
-                <!-- A remplacer par un logo ou autre -->
-                <div class="col-xs-offset-2 col-xs-2">
-                    <a href="index.php">Accueil</a>
-                </div>
                 <div class="padd40">
-                    <div class="col-xs-offset-3 col-xs-2">
+                    <div class="col-xs-offset-8 col-xs-2">
 
                         <div class="form-group">
                                 <p> Username : 
@@ -22,9 +17,11 @@
                                 echo $_SESSION['nom'];
                                 ?>    
                                 </p>
-                                <!-- profil button-->
-                                <a href="#" class="btn btn-warning">Profile <span class="glyphicon glyphicon-user"></span></a>
-                                 <!-- deconnection button-->
+                                <!-- recettes préférées bouton-->
+                                <a href="recettespreferees.php" class="btn btn-warning">Mes recettes préférées <span class="glyphicon glyphicon-user"></span></a>
+                                <!-- profil bouton-->
+                                <a href="monprofil.php" class="btn btn-warning">Mon profil <span class="glyphicon glyphicon-user"></span></a>
+                                 <!-- deconnection bouton-->
                                 <form action="#" method="post" class="form-horizontal">
                                     <input name="deconnection" type="submit" class="btn btn-danger" value="Deconnection"/>
                                 </form>
@@ -36,9 +33,8 @@
                 
     </div>
 <?php
+    include ("fonctions.php");
     if(isset($_POST['deconnection'])){
-        session_unset();
-        session_destroy();
-        header("Refresh:0");
+        deconnection();
     }
 ?>
