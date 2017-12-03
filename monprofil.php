@@ -13,11 +13,18 @@
 <body>
 <?php
 	session_start();
+	$html = "";
+	$html .= '
+	<ol class="breadcrumb" >
+			<li><a href="index.php">Accueil</a></li>
+			<li><a href="monprofil.php">Profil</a></li>
+	</ol>';
 	if(!isset($_SESSION['no_util'])) header("Location:index.php");
 	else {
 		include("banniereco.php");
 		$no_util = $_SESSION['no_util'];
-		echo afficheInfosUtilisateurs(getInfosUtilisateurs($no_util));
+		$html .= afficheInfosUtilisateurs(getInfosUtilisateurs($no_util));
+		echo $html;
 		if(isset($_POST['submit'])){
 			modifieInfosUtilisateur($no_util);
 			header("Refresh:0");

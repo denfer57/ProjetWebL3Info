@@ -13,12 +13,17 @@
 <body>
 <?php
 	session_start();
+
 	if(!isset($_SESSION['no_util'])) header("Location:index.php");
 	else {
-		$html = "";
 		include("banniereco.php");
+		$html = "";
 		$no_util = $_SESSION['no_util'];
-		$html .= afficherAllCocktails(getInfosRecettes(recupereRecettesPreferees($no_util)));
+		$html .= 
+		'<ol class="breadcrumb" >
+			<li><a href="index.php">Accueil</a></li>
+			<li><a href="recettespreferees.php">Recettes préférées</a></li>
+		</ol>'.afficherAllCocktails(getInfosRecettes(recupereRecettesPreferees($no_util)));
 		echo $html;
 	}
 ?>

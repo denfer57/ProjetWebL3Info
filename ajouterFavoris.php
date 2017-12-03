@@ -12,12 +12,12 @@
         		ajouteFavoris($no_util, $cocktail);
         	}
         } 
-     }
-     else{
-         foreach($_POST as $cle => $val)
-         {
+    }
+    else{
+        foreach($_POST as $cle => $val)
+        {
          	$cocktail = getNoRecetteAPartirDuTitre(normaliser($val));
             setCookie('fav['.$cocktail.']',$val, time()+3600);
-         }
-     }
+        }
+    }
 ?>
