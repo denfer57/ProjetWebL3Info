@@ -134,6 +134,7 @@ function getRacine($hierarchie){ //recupere la racine de la liste hierarchie
 
 function afficherAllCocktails($Recettes){ //affiche tous les cocktails a partir d'une liste
     $html = "";
+    if(empty($Recettes)) $html .= "<h3>Aucun cocktail ne correspond à votre recherche !</h3>";
     $dir_nom = 'Photos'; // dossier contenant les photos
     $dir = opendir($dir_nom) or die('Erreur de listage : le répertoire n\'existe pas'); // on ouvre le contenu du dossier courant
     $fichier = array(); // on déclare le tableau contenant le nom des images
@@ -328,6 +329,7 @@ function getNoRecetteAPartirDuTitre($titre){ //recupere le no de la recette à p
 function getNoRecettesAPartirDuTitre($titre){ //recupere les numéros des recettes à partir du titre
     include("connection_bdd.php");
     $j = 0;
+    $no_recette = [];
     $query = "SELECT no_recette
                         FROM recettes
                         WHERE titre LIKE CONCAT('%', :cocktail, '%')";

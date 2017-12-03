@@ -3,7 +3,7 @@
                 
         <div id="banniere">
                 <div class="padd40">
-                    <form action="#" method="post">
+                    <form action="index.php" method="post">
                         <input type="text" name="recherche" id="recherche" placeholder="Recherche de cocktails..." required=""/>
                         <input class="btn btn-danger" type="submit" value="Recherche"/>
                     </form>

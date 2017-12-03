@@ -4,13 +4,13 @@
                 <br/>
                 <div class="col-xs-3">
                     <div class="padd40">
-                    <form action="#" method="post">
+                    <form action="index.php" method="post">
                         <input type="text" name="recherche" id="recherche" placeholder="Recherche de cocktails..." required=""/>
                         <input class="btn btn-danger" type="submit" value="Recherche"/>
                     </form>
                     </div>
                 </div>
-                <form action="#" method="post" class="form-horizontal">
+                <form action="index.php" method="post" class="form-horizontal">
                     <div class="col-xs-offset-2 col-xs-4">
                     <div class="padd20">
                         <!-- champs du nom d'utilisateur -->
