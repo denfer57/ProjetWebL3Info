@@ -29,6 +29,10 @@
 			modifieInfosUtilisateur($no_util);
 			header("Refresh:0");
 		}
+		if(isset($_POST['submit2'])){
+			changeMotDePasse($no_util);
+			echo 'Le mot de passe a été changé.';
+		}
 	}
 ?>
 </body>

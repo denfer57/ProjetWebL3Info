@@ -8,9 +8,7 @@
         foreach($_POST as $cle => $val)
         {
         	$cocktail = getNoRecetteAPartirDuTitre(normaliser($val));
-        	if(!estFavoris($cocktail)){
-        		ajouteFavoris($no_util, $cocktail);
-        	}
+        	ajouteFavoris($no_util, $cocktail);	
         } 
     }
     else{

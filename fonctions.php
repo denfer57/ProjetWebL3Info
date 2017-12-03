@@ -22,20 +22,20 @@ function addRecettesBDD($Recettes) { //ajoute les recettes dans la BDD
 }
 
 function checkUserName($username){ //vérifie si le login existe deja ou non
-        include("connection_bdd.php");
-        $query = "SELECT COUNT(*) nb
-        FROM utilisateurs
-        WHERE login = :ndc";
-        $statement = $connexion->prepare($query);
-        $statement->bindValue(":ndc", $username, PDO::PARAM_STR);
-        $statement->execute();
-        
-        $row = $statement->fetch();
+    include("connection_bdd.php");
+    $query = "SELECT COUNT(*) nb
+    FROM utilisateurs
+    WHERE login = :ndc";
+    $statement = $connexion->prepare($query);
+    $statement->bindValue(":ndc", $username, PDO::PARAM_STR);
+    $statement->execute();
+    
+    $row = $statement->fetch();
 
-        //Si le resultat de la requete vaut 1, on retourne vrai
-        //Autrement dit, s' il y a deux fois le même nom, on renvoie vrai
-        if($row['nb']==1) return true;
-        else return false;
+    //Si le resultat de la requete vaut 1, on retourne vrai
+    //Autrement dit, s' il y a deux fois le même nom, on renvoie vrai
+    if($row['nb']==1) return true;
+    else return false;
 }
 
 function addUser(){ //ajoute un utilisateur à la BDD
@@ -95,6 +95,15 @@ function connection($username){ //vérifie si les identifiants sont justes, cré
     if(strcmp($password, $passwordco)==0) {
         $_SESSION["nom"] = $username;
         $_SESSION["no_util"] = $no_util;
+        if(isset($_COOKIE['fav'])){
+            foreach ($_COOKIE['fav'] as $cle => $val) {
+                $cocktail = getNoRecetteAPartirDuTitre(normaliser($val));
+                if(!estFavoris($cocktail)) { //on ajoute les cookies qui ne sont pas presents des que l'utilisateur se connecte et on détruit les cookies
+                    ajouteFavoris($no_util, $cocktail); 
+                    setCookie('fav['.$cocktail.']',$val, time()-3600);
+                }
+            }
+        }
         return true;
     }
     else return false;
@@ -304,8 +313,11 @@ function estFavoris($cocktail){ //regarde si le cocktail est en favoris
         $statement->bindValue(":utilisateur", $utilisateur, PDO::PARAM_STR);
         $statement->bindValue(":cocktail", $no_recette, PDO::PARAM_STR);
         $statement->execute();
+
         if($statement->fetch()) return true;
         else return false;
+
+        return false;
     }
     else {
         $no_recette = getNoRecetteAPartirDuTitre($cocktail);
@@ -385,7 +397,7 @@ function recupereRecettesPreferees($no_util){ //recupere les recettes préféré
 function getInfosUtilisateurs($no_util){ //recupere les infos d'un utilisateur
     include("connection_bdd.php");
     $result = [];
-    $query = "SELECT nom_util, prenom_util, email, code_postal, adresse, ville, telephone
+    $query = "SELECT nom_util, prenom_util, email, code_postal, adresse, ville, telephone, date_naissance, sexe
                 FROM utilisateurs
                 WHERE no_util = :utilisateur";
     $statement = $connexion->prepare($query);
@@ -400,6 +412,8 @@ function getInfosUtilisateurs($no_util){ //recupere les infos d'un utilisateur
         $result['adresse'] = $donnees['adresse'];
         $result['ville'] = $donnees['ville'];
         $result['telephone'] = $donnees['telephone'];
+        $result['date_naissance'] = $donnees['date_naissance'];
+        $result['sexe'] = $donnees['sexe'];
     }
     return $result;
 }
@@ -412,12 +426,21 @@ function afficheInfosUtilisateurs($tab){ //affiche les infos d'un utlisateur
     <form action="#" method="post">
         <div><label for="nom_util">Nom : </label><input type="text" name="nom_util" value="'.$tab['nom_util'].'" ></div>
         <div><label for="prenom_util">Prénom : </label><input type="text" name="prenom_util" value="'.$tab['prenom_util'].'"  ></div>
+        <div><label for="sexe">Sexe : </label>
+            <label class="radio-inline"><input type="radio" name="sexe" value="H" '; if($tab['sexe']=='H') $html .= 'checked'; $html .= '>Homme</label>
+            <label class="radio-inline"><input type="radio" name="sexe" value="F" '; if($tab['sexe']=='F') $html .= 'checked'; $html .= '>Femme</label>
+        </div>
+        <div><label for="date_naissance">Date de naissance : </label><input type="date" name="date_naissance" value="'.$tab['date_naissance'].'"/></div>
         <div><label for="email">Email : </label><input type="text" name="email" value="'.$tab['email'].'" ></div>
         <div><label for="code_postal">Code postal : </label><input type="text" name="code_postal" value="'.$tab['code_postal'].'"  ></div>
         <div><label for="adresse">Adresse : </label><input type="text" name="adresse" value="'.$tab['adresse'].'" ></div>
         <div><label for="ville">Ville : </label><input type="text" name="ville" value="'.$tab['ville'].'" ></div>
         <div><label for="telephone">Téléphone : </label><input type="text" name="telephone" value="'.$tab['telephone'].'" ></div>
         <div><input name="submit" type="submit" value="Modifier" class="btn btn-warning" /></div>
+    </form>
+    <form action="#" method="post">
+        <div><label for="mdp">Mot de passe : </label><input type="password" name="mdp"></div>
+        <div><input name="submit2" type="submit" value="Modifier" class="btn btn-danger" /></div>
     </form>';
     return $html;
 }
@@ -425,7 +448,7 @@ function afficheInfosUtilisateurs($tab){ //affiche les infos d'un utlisateur
 function modifieInfosUtilisateur($no_util){ //modifie les infos de l'utilisateur dans la BDD
     include("connection_bdd.php");
     $query = "UPDATE utilisateurs
-                SET nom_util = :nom_util, prenom_util = :prenom_util, email = :email, code_postal = :code_postal, adresse = :adresse, ville = :ville, telephone = :telephone
+                SET nom_util = :nom_util, prenom_util = :prenom_util, email = :email, code_postal = :code_postal, adresse = :adresse, ville = :ville, telephone = :telephone, date_naissance = :date_naissance, sexe = :sexe
                 WHERE no_util = :utilisateur";
     $statement = $connexion->prepare($query);
     $statement->bindValue(":nom_util", $_POST['nom_util'], PDO::PARAM_STR);
@@ -435,6 +458,20 @@ function modifieInfosUtilisateur($no_util){ //modifie les infos de l'utilisateur
     $statement->bindValue(":adresse", $_POST['adresse'], PDO::PARAM_STR);
     $statement->bindValue(":ville", $_POST['ville'], PDO::PARAM_STR);
     $statement->bindValue(":telephone", $_POST['telephone'], PDO::PARAM_STR);
+    $statement->bindValue(":date_naissance", $_POST['date_naissance'], PDO::PARAM_STR);
+    $statement->bindValue(":sexe", $_POST['sexe'], PDO::PARAM_STR);
+    $statement->bindValue(":utilisateur", $no_util, PDO::PARAM_STR);
+    $statement->execute();
+}
+
+function changeMotDePasse($no_util){
+    include("connection_bdd.php");
+    $mdp = $_POST['mdp'];
+    $query = "UPDATE utilisateurs
+                SET mdp = :mdp
+                WHERE no_util = :utilisateur";
+    $statement = $connexion->prepare($query);
+    $statement->bindValue(":mdp", hash('sha256',$mdp), PDO::PARAM_STR);
     $statement->bindValue(":utilisateur", $no_util, PDO::PARAM_STR);
     $statement->execute();
 }

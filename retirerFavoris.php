@@ -10,7 +10,7 @@
             $cocktail = getNoRecetteAPartirDuTitre(normaliser($val));
             supprimeFavoris($no_util, $cocktail);
         }
-     }
+    }
     else{
         foreach($_POST as $cle => $val)
         {
