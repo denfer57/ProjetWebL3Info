@@ -26,7 +26,7 @@ include ("connection_bdd.php");
 /*!40101 SET NAMES utf8 */;
 
 //--
-//-- Base de données :  `projet_web_l3_ino`
+//-- Base de données :  `projet_web_l3_info`
 //--
 //-- --------------------------------------------------------
 //--
