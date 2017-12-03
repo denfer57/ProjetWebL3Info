@@ -321,8 +321,25 @@ function getNoRecetteAPartirDuTitre($titre){ //recupere le no de la recette à p
     $statement = $connexion->prepare($query); 
     $statement->bindValue(":cocktail", $titre, PDO::PARAM_STR);
     $statement->execute();
-    $titre = $statement->fetchColumn();
-    return $titre;
+    $no_recette = $statement->fetchColumn();
+    return $no_recette;
+}
+
+function getNoRecettesAPartirDuTitre($titre){ //recupere les numéros des recettes à partir du titre
+    include("connection_bdd.php");
+    $j = 0;
+    $query = "SELECT no_recette
+                        FROM recettes
+                        WHERE titre LIKE CONCAT('%', :cocktail, '%')";
+    $statement = $connexion->prepare($query); 
+    $statement->bindValue(":cocktail", $titre, PDO::PARAM_STR);
+    $statement->execute();
+    while ($donnees = $statement->fetch())
+    {
+        $no_recette[$j] = $donnees['no_recette'];
+        $j++; 
+    }
+    return $no_recette;
 }
 
 function ajouteFavoris($no_util, $cocktail){ //ajoute le cocktail choisi par l'utilisateur en favoris

@@ -4,9 +4,9 @@
                 <br/>
                 <div class="col-xs-3">
                     <div class="padd40">
-                    <form action="" method="post">
+                    <form action="#" method="post">
                         <input type="text" name="recherche" id="recherche" placeholder="Recherche de cocktails..." required=""/>
-                        <input id="search" class="btn btn-danger" type="submit" value="Recherche"/>
+                        <input class="btn btn-danger" type="submit" value="Recherche"/>
                     </form>
                     </div>
                 </div>

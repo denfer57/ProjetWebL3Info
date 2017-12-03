@@ -28,14 +28,24 @@
 			foreach($filAriane as $element){
 				$html .= '<li><a href="?elt='.htmlspecialchars($element).'">'. $element.'</a></li>';
 			}
-		$html .= '</ol>'.afficherAllCocktails(getInfosRecettes(getNoRecettes($_GET['elt'])));
+		$html .= '</ol>';
+		if(isset($_POST['recherche'])) {
+			$html .= afficherAllCocktails(getInfosRecettes(getNoRecettesAPartirDuTitre($_POST['recherche'])));
+		}	
+		else $html .= afficherAllCocktails(getInfosRecettes(getNoRecettes($_GET['elt'])));
 	}
 	else {
 		$html .= afficherSousCateg(getRacine($Hierarchie), $Hierarchie).'
 		<ol class="breadcrumb" >
 			<li><a href="index.php">Accueil</a></li>
-		</ol>'.afficherAllCocktails(getTousLesCocktails());
+		</ol>';
+		if(isset($_POST['recherche'])) {
+			$html .= afficherAllCocktails(getInfosRecettes(getNoRecettesAPartirDuTitre($_POST['recherche'])));
+		}	
+		else $html .= afficherAllCocktails(getTousLesCocktails());
 	}
+
+
 	//print_r(getNoRecettes("Assaisonnement", $Recettes));
 	//$html .= afficherRecettes(getRecette("Malibu"));
 	//$html .= afficherAllCocktails(getInfosRecettes(getNoRecettes("Malibu")));
