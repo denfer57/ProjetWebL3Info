@@ -1,3 +1,23 @@
+<?php
+    $html = "";
+    include ("fonctions.php");
+
+    if(isset($_POST["ndcco"])) {
+        $username = trim($_POST["ndcco"]);
+        if(connection($username)==true) {
+            header("Refresh:0");
+        }
+        else {
+            $html.='
+            <div style="text-align: center;">
+                <h2 style="color:red"> Le nom d\'utilisateur ou le mot de passe est incorrect</h2>
+            </div>';
+        }
+    }
+
+    
+?>
+
 <div class="row">
                 
         <svg viewBox="0 0 760 300">
@@ -131,25 +151,3 @@
 </div>
 
 <!-- end login form -->
-
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<?php
-    $html = "";
-    include ("fonctions.php");
-
-    if(isset($_POST["ndcco"])) {
-        $username = trim($_POST["ndcco"]);
-        if(connection($username)==true) {
-	    error_reporting(0);
-            echo " <meta http-equiv=\"refresh\" content=\"0\"> " ;
-        }
-        else {
-            $html.='
-            <div style="text-align: center;">
-                <h2 style="color:red"> Le nom d\'utilisateur ou le mot de passe est incorrect</h2>
-            </div>';
-        }
-    }
-
-    
-?>
