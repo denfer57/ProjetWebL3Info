@@ -115,7 +115,7 @@ function deconnection(){ //détruit la session en cours
     session_unset();
     session_destroy();
     if(basename(__FILE__)!="index.php") header("Location:index.php");
-    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+    error_reporting(0);
     echo " <meta http-equiv=\"refresh\" content=\"0\"> " ;
 }
  
@@ -146,7 +146,7 @@ function getRacine($hierarchie){ //recupere la racine de la liste hierarchie
 
 function afficherAllCocktails($Recettes){ //affiche tous les cocktails a partir d'une liste
     $html = "";
-    if(empty($Recettes)) $html .= "<h3>Aucun cocktail ne correspond à votre recherche !</h3>";
+    if(empty($Recettes)) $html .= "<h3 align=\"center\" >Aucun cocktail ne correspond à votre recherche !</h3>";
     $dir_nom = 'Photos'; // dossier contenant les photos
     $dir = opendir($dir_nom) or die('Erreur de listage : le répertoire n\'existe pas'); // on ouvre le contenu du dossier courant
     $fichier = array(); // on déclare le tableau contenant le nom des images
@@ -185,27 +185,28 @@ function afficherAllCocktails($Recettes){ //affiche tous les cocktails a partir 
         this.innerHTML=\'Supprimé !\'';
 
         $html .= '
-        <div class="col-lg-3">
-                    <div class="cocktail" style="border-radius: 50px 0px 50px 00px; background-color:lightCyan;" >
+        <div style="float:left; width: 500px; height: 300px;  margin : 5% 5% 400px 5%;" >
+                    <div class="cocktail" style="border-style: inset; border-radius: 50px 0px 50px 00px; background-color:lightCyan; opacity:0.85" >
                         <figure>
-                            <img style="border-radius: 50px 0px 50px 00px;" src="Photos/';
+                            <img  style="border-radius: 50px 0px 50px 00px;" src="Photos/';
                             if(in_array($titre[$i], $nom_cocktail)) $html .= ''.$fichier[array_search($titre[$i], $nom_cocktail)].''; else $html .= ''.$imgDefaut.'';
                             $html .='" 
                             alt="';
                             if(in_array($titre[$i], $nom_cocktail)) $html .= ''.$nom_cocktail[array_search($titre[$i], $nom_cocktail)].''; else $html .= ''.$txtDefaut.'';
                             $html .= '"/>
-                            <figcaption>'.$titre[$i].'</figcaption>
+                            <figcaption> <b> <h3> '.$titre[$i].'</h3> </b> </figcaption>
                         </figure>
-                        <h4>Ingrédients :</h4>
-                        <ul>';for($j=0;$j<count($ingredients);$j++) $html .= '<li>'.$ingredients[$j].'</li>';
-                    $html .= '</ul>
-                    <h4>Preparation :</h4>'.$preparation[$i].'</br>';
+                        <h4>Ingrédients :</h4> 
+                        <ul class="cocktailTo">';for($j=0;$j<count($ingredients);$j++) $html .= '<li class="cocktailTo">'.$ingredients[$j].'</li> </tr>';
+                    $html .= '</ul> 
+                    <h4>Preparation :</h4><p       style="  text-align: justify;
+    text-justify: inter-word; margin:5%;" > '.$preparation[$i].'</p> </br>';
                     if(!estFavoris($titre[$i])) {
                         $html.='
                         <p><button class="btn btn-primary" onclick="'.$ajouterFavoris.'"> Ajouter aux favoris</button></p>';
                     }
                     else $html.='
-                        <p><button class="btn btn-primary" onclick="'.$retirerFavoris.'"> Retirer des favoris</button></p>';
+                         <p><button class="btn btn-primary" onclick="'.$retirerFavoris.'"> Retirer des favoris</button></p>';
                     $html .= '</div>
         </div>';
     }

@@ -22,13 +22,17 @@
 <body>
 <?php
 	session_start();
+
 	$html = "";
 	$html .= '
 	<ol class="breadcrumb" >
 			<li><a href="index.php">Accueil</a></li>
 			<li><a href="monprofil.php">Profil</a></li>
 	</ol>';
-	if(!isset($_SESSION['no_util'])) header("Location:index.php");
+	if(!isset($_SESSION['no_util'])){
+		error_reporting(0);
+	        echo " <meta http-equiv=\"refresh\" content=\"0\"> " ;
+	}
 	else {
 		include("banniereco.php");
 		$no_util = $_SESSION['no_util'];

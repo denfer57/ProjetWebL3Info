@@ -12,7 +12,13 @@
                     <use xlink:href="#s-text" class="text-copy"></use>
             </g>
         </svg>
-   <h4 align="center"> Un porjet réalisé par </br> <b> Jordan Fromeyer & Marwin Nimeskern </b>  </h4> 
+
+   	<div class="how-it-works-heading" align="center" >
+        	 <h1  class="section-title"> "Un cocktail c'est un peu de poésie dans une coupe" </h1> 
+        	 <h4> Robert De Niro </h4>
+	</div>    </br>
+        <h4 align="center"> Un projet réalisé par </br> <b> Jordan Fromeyer & Marwin Nimeskern </b>  </h4> 
+        
    <div class="container">
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -134,7 +140,7 @@
     if(isset($_POST["ndcco"])) {
         $username = trim($_POST["ndcco"]);
         if(connection($username)==true) {
-	    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+	    error_reporting(0);
             echo " <meta http-equiv=\"refresh\" content=\"0\"> " ;
         }
         else {
