@@ -1,4 +1,6 @@
 <?php
+
+
 function addRecettesBDD($Recettes) { //ajoute les recettes dans la BDD
     include("connection_bdd.php");
     for($i = 0 ; $i<count($Recettes) ; $i++){
@@ -113,7 +115,8 @@ function deconnection(){ //détruit la session en cours
     session_unset();
     session_destroy();
     if(basename(__FILE__)!="index.php") header("Location:index.php");
-    header("Refresh:0");
+    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+    echo " <meta http-equiv=\"refresh\" content=\"0\"> " ;
 }
  
 function afficherSousCateg($parent, $hierarchie){ //affiche les sous-categorie (boutons)
@@ -183,9 +186,9 @@ function afficherAllCocktails($Recettes){ //affiche tous les cocktails a partir 
 
         $html .= '
         <div class="col-lg-3">
-                    <div class="cocktail">
+                    <div class="cocktail" style="border-radius: 50px 0px 50px 00px; background-color:lightCyan;" >
                         <figure>
-                            <img src="Photos/';
+                            <img style="border-radius: 50px 0px 50px 00px;" src="Photos/';
                             if(in_array($titre[$i], $nom_cocktail)) $html .= ''.$fichier[array_search($titre[$i], $nom_cocktail)].''; else $html .= ''.$imgDefaut.'';
                             $html .='" 
                             alt="';
@@ -421,27 +424,34 @@ function getInfosUtilisateurs($no_util){ //recupere les infos d'un utilisateur
 function afficheInfosUtilisateurs($tab){ //affiche les infos d'un utlisateur
     $html = "";
     $html .= '
-    <h4>Bonjour '.$tab['nom_util'].' '.$tab['prenom_util'].', </h4>
-    <h1>Voici vos informations personnelles :</h1>
-    <form action="#" method="post">
-        <div><label for="nom_util">Nom : </label><input type="text" name="nom_util" value="'.$tab['nom_util'].'" ></div>
-        <div><label for="prenom_util">Prénom : </label><input type="text" name="prenom_util" value="'.$tab['prenom_util'].'"  ></div>
-        <div><label for="sexe">Sexe : </label>
+	<div style="border-radius: 50px 0px 50px 00px; background-color:lightCyan; opacity:0.8">
+    <h2 align="center">Bonjour '.$tab['nom_util'].' '.$tab['prenom_util'].', </h2>
+    <h1 align="center">Voici vos informations personnelles :</h1>
+    
+    <form action="#" method="post" >
+	<table align="center" > 
+	
+        <tr> <td>  <div><label for="nom_util">Nom : </label> </td> <td> <input type="text" name="nom_util" value="'.$tab['nom_util'].'" ></div> <td> <tr> 
+        <tr> <td>  <div><label for="prenom_util">Prénom : </label> </td> <td> <input type="text" name="prenom_util" value="'.$tab['prenom_util'].'"  ></div> <td> <tr>
+        <tr> <td>  <div><label for="sexe">Sexe : </label></td> <td>
             <label class="radio-inline"><input type="radio" name="sexe" value="H" '; if($tab['sexe']=='H') $html .= 'checked'; $html .= '>Homme</label>
             <label class="radio-inline"><input type="radio" name="sexe" value="F" '; if($tab['sexe']=='F') $html .= 'checked'; $html .= '>Femme</label>
-        </div>
-        <div><label for="date_naissance">Date de naissance : </label><input type="date" name="date_naissance" value="'.$tab['date_naissance'].'"/></div>
-        <div><label for="email">Email : </label><input type="text" name="email" value="'.$tab['email'].'" ></div>
-        <div><label for="code_postal">Code postal : </label><input type="text" name="code_postal" value="'.$tab['code_postal'].'"  ></div>
-        <div><label for="adresse">Adresse : </label><input type="text" name="adresse" value="'.$tab['adresse'].'" ></div>
-        <div><label for="ville">Ville : </label><input type="text" name="ville" value="'.$tab['ville'].'" ></div>
-        <div><label for="telephone">Téléphone : </label><input type="text" name="telephone" value="'.$tab['telephone'].'" ></div>
-        <div><input name="submit" type="submit" value="Modifier" class="btn btn-warning" /></div>
-    </form>
+        </div><td> <tr>
+        <tr> <td>  <div><label for="date_naissance">Date de naissance : </label> </td> <td><input type="date" name="date_naissance" value="'.$tab['date_naissance'].'"/></div> <td> <tr>
+        <tr> <td>  <div><label for="email">Email : </label> </td> <td> <input type="text" name="email" value="'.$tab['email'].'" ></div> <td> <tr>
+        <tr> <td> <div><label for="code_postal">Code postal : </label> </td> <td> <input type="text" name="code_postal" value="'.$tab['code_postal'].'"  ></div> <td> <tr>
+       <tr> <td>  <div><label for="adresse">Adresse : </label> </td> <td> <input type="text" name="adresse" value="'.$tab['adresse'].'" ></div> <td> <tr>
+       <tr> <td>  <div><label for="ville">Ville : </label> </td> <td> <input type="text" name="ville" value="'.$tab['ville'].'" ></div> <td> <tr>
+       <tr> <td>  <div><label for="telephone">Téléphone : </label> </td> <td> <input type="text" name="telephone" value="'.$tab['telephone'].'" ></div><td> <tr>
+       <tr> <td>  <div><input name="submit" type="submit" value="Modifier" class="btn btn-warning" /></div> <td> <tr>
+    	</table>
+</form> 
     <form action="#" method="post">
-        <div><label for="mdp">Mot de passe : </label><input type="password" name="mdp"></div>
-        <div><input name="submit2" type="submit" value="Modifier" class="btn btn-danger" /></div>
-    </form>';
+	<table align="center"> 
+       <tr> <td>  <div><label for="mdp">Mot de passe : </label> </td> <td>  <input type="password" name="mdp"></div> <td> <tr>
+       <tr> <td>  <div><input name="submit2" type="submit" value="Modifier" class="btn btn-danger" /></div> <td> <tr>
+   	 </table>
+    </form> </div> '  ;
     return $html;
 }
 
