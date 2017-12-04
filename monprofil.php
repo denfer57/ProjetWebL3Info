@@ -30,22 +30,21 @@
 			<li><a href="monprofil.php">Profil</a></li>
 	</ol>';
 	if(!isset($_SESSION['no_util'])){
-		error_reporting(0);
-	        echo " <meta http-equiv=\"refresh\" content=\"0\"> " ;
+		header("Location:index.php");
 	}
 	else {
 		include("banniereco.php");
 		$no_util = $_SESSION['no_util'];
 		$html .= afficheInfosUtilisateurs(getInfosUtilisateurs($no_util));
-		echo $html;
 		if(isset($_POST['submit'])){
 			modifieInfosUtilisateur($no_util);
-			header("Refresh:0");
+			$html .= 'Les informations ont été modifiées.';
 		}
 		if(isset($_POST['submit2'])){
 			changeMotDePasse($no_util);
-			echo 'Le mot de passe a été changé.';
+			$html .= 'Le mot de passe a été changé.';
 		}
+		echo $html;
 	}
 ?>
 </body>

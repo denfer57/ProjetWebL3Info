@@ -1,4 +1,9 @@
-
+<?php
+    include ("fonctions.php");
+    if(isset($_POST['deconnection'])){
+        deconnection();
+    }
+?>
     <div class="row">
     
         <svg viewBox="0 0 760 300">
@@ -82,13 +87,5 @@
   </div><!-- /.container-fluid -->
 </nav>
 </div>
-
-
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
         
-<?php
-    include ("fonctions.php");
-    if(isset($_POST['deconnection'])){
-        deconnection();
-    }
-?>
+

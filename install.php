@@ -3,7 +3,7 @@ $pdo = new PDO('mysql:host=localhost', 'root', '',
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
 );
  
-$request = "CREATE DATABASE IF NOT EXISTS projet_web_l3_info DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
+$request = "CREATE DATABASE IF NOT EXISTS projet_web_l3_info_fromeyer_nimeskern DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
 $pdo->prepare($request)->execute();
 
 include ("connection_bdd.php");
@@ -26,7 +26,7 @@ include ("connection_bdd.php");
 /*!40101 SET NAMES utf8 */;
 
 //--
-//-- Base de données :  `projet_web_l3_info`
+//-- Base de données :  `projet_web_l3_info_fromeyer_nimeskern`
 //--
 //-- --------------------------------------------------------
 //--

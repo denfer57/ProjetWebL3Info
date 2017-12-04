@@ -115,8 +115,6 @@ function deconnection(){ //détruit la session en cours
     session_unset();
     session_destroy();
     if(basename(__FILE__)!="index.php") header("Location:index.php");
-    error_reporting(0);
-    echo " <meta http-equiv=\"refresh\" content=\"0\"> " ;
 }
  
 function afficherSousCateg($parent, $hierarchie){ //affiche les sous-categorie (boutons)

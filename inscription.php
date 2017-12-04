@@ -38,9 +38,9 @@
 		<form action="#" method="post">
 		<table align="center" style="border-radius: 50px 0px 50px 00px; background-color:lightCyan;">
 				<tr> <td> <div><label for="ndc">Login : </label> </td> <td> <input type="text" name="ndc" required=""/></div>  <td> <tr>
+				<tr> <td> <div><label for="mdp">Mot de passe : </label>   </td> <td> <input type="password" name="mdp" required=""/></div><td> <tr>
 				<tr> <td> <div><label for="nom_util">Nom : </label> </td>  <td> <input type="text" name="nom_util"/></div> <td> <tr>
 				<tr> <td> <div><label for="prenom_util">Prénom : </label> </td> <td> <input type="text" name="prenom_util"/></div><td> <tr>
-				<tr> <td> <div><label for="mdp">Mot de passe : </label>   </td> <td> <input type="password" name="mdp" required=""/></div><td> <tr>
 				<tr> <td> <div><label for="mail">Adresse email : </label> </td> <td> <input type="text" name="mail"/></div><td> <tr>
 				<tr> <td> <div><label for="sexe">Sexe : </label></td> <td> <label class="radio-inline"><input type="radio" name="sexe" value="H">Homme</label><td> <tr>
 				<tr> <td> <label class="radio-inline"> </td> <td> <input type="radio" name="sexe" value="F">Femme</label></div><td> <tr>
