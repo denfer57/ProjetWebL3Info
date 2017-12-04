@@ -185,7 +185,7 @@ function afficherAllCocktails($Recettes){ //affiche tous les cocktails a partir 
         this.innerHTML=\'Supprimé !\'';
 
         $html .= '
-        <div style="float:left; width: 30%; height: 300px;  margin : 5% 5% 25% 5%;"  >
+        <div class="col-lg-5"  >
                     <div class="cocktail" style="border-style: inset; border-radius: 50px 0px 50px 00px; background-color:lightCyan; opacity:0.85" >
                         <figure>
                             <img  style="border-radius: 50px 0px 50px 00px;" src="Photos/';
