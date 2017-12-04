@@ -48,7 +48,7 @@
 			$html .= '<ol class="breadcrumb" >
 				<li><a href="index.php">Accueil</a></li>
 			</ol>
-			<h3>Résultat de votre recherche :</h3>'.afficherAllCocktails(getInfosRecettes(getNoRecettesAPartirDuTitre($_POST['recherche'])));
+			<h2 align="center" >Résultat de votre recherche :</h2>'.afficherAllCocktails(getInfosRecettes(getNoRecettesAPartirDuTitre($_POST['recherche'])));
 		}	
 		else {
 			$html .= afficherSousCateg(getRacine($Hierarchie), $Hierarchie).'

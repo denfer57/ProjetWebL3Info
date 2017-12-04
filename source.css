@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Cabin);
 
+ul.cocktailTo{
+    width: 70%;
+    margin: auto;
+}
+
+li.cocktailTo{ 
+text-align:left;
+}
 
 //----------------------------------------------------------------------------------------
  // Inscripiton / Connexion

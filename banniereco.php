@@ -12,9 +12,14 @@
                     <use xlink:href="#s-text" class="text-copy"></use>
                     <use xlink:href="#s-text" class="text-copy"></use>
             </g>
-        </svg>        
+        </svg>     
 
-        <h4 align="center"> Un porjet réalisé par </br> <b> Jordan Fromeyer & Marwin Nimeskern </b>  </h4> 
+	<div class="how-it-works-heading" align="center" >
+        	 <h1  class="section-title"> "Un cocktail c'est un peu de poésie dans une coupe" </h1> 
+        	 <h4> Robert De Niro </h4>
+        </div>   
+	</br>
+        <h4 align="center"> Un projet réalisé par </br> <b> Jordan Fromeyer & Marwin Nimeskern </b>  </h4> 
         
         <div class="container">
 <nav class="navbar navbar-default" role="navigation">
