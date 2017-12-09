@@ -382,6 +382,7 @@ function supprimeFavoris($no_util, $cocktail){ //retire le cocktail choisi par l
 function recupereRecettesPreferees($no_util){ //recupere les recettes préférées d'un utilisateur
     include("connection_bdd.php");
     $j = 0;
+    $result = [];
     $query = "SELECT no_recette
                 FROM recettes_preferees
                 WHERE no_util = :utilisateur";
@@ -468,7 +469,8 @@ function modifieInfosUtilisateur($no_util){ //modifie les infos de l'utilisateur
     $statement->bindValue(":ville", $_POST['ville'], PDO::PARAM_STR);
     $statement->bindValue(":telephone", $_POST['telephone'], PDO::PARAM_STR);
     $statement->bindValue(":date_naissance", $_POST['date_naissance'], PDO::PARAM_STR);
-    $statement->bindValue(":sexe", $_POST['sexe'], PDO::PARAM_STR);
+    if(isset($_POST['sexe'])) $statement->bindValue(":sexe", $_POST['sexe'], PDO::PARAM_STR);
+    else $statement->bindValue(":sexe", "", PDO::PARAM_STR);
     $statement->bindValue(":utilisateur", $no_util, PDO::PARAM_STR);
     $statement->execute();
 }
